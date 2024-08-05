@@ -29,17 +29,20 @@ const CartItems = () => {
                   {item.size && (
                     <p className="text-small-medium">{item.size}</p>
                   )}
+                  {item.color && (
+                    <p className="text-small-medium">{item.color}</p>
+                  )}
                   <p className="text-small-medium">{naira(item.item.price)}</p>
                 </div>
               </div>
 
               <div className="flex gap-4 items-center">
                 <MinusCircle
-                  className="hover:text-red-500 cursor-pointer"
+                  className="hover:text-gold cursor-pointer"
                   onClick={() => cart.decreaseQuantity(item.item._id)}
                 />
                 <p className="text-body-bold">{item.quantity}</p>
-                <PlusCircle className="hover:text-red-500 cursor-pointer" onClick={() => cart.increaseQuantity(item.item._id)} />
+                <PlusCircle className="hover:text-gold cursor-pointer" onClick={() => cart.increaseQuantity(item.item._id)} />
               </div>
 
               <Trash className="hover:text-red-500 cursor-pointer" onClick={() => cart.removeItem(item.item._id)} />

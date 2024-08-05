@@ -1,4 +1,4 @@
-import { LayoutDashboard, ShoppingBag, Tag, UserRound, Utensils } from "lucide-react";
+import { LayoutDashboard, Shapes, ShoppingBag, Tag, UserRound } from "lucide-react";
 
 export const mainMenu = [
   {
@@ -9,37 +9,42 @@ export const mainMenu = [
   {
     id: "2",
     label: "Luxury Store",
-    url: "/luxury-store",
+    url: "/category/luxury-store",
     sub: [
       {
         label: "Shirts",
-        url: "shirts",
+        url: "/category/categoryshirts",
         sub: [
-          { label: "Sweatshirts", url: "/sweatshirts" },
-          { label: "Flannel", url: "/flannel" },
-          { label: "Round Necks", url: "/round-necks" },
+          { label: "Sweatshirts", url: "/category/sweatshirts" },
+          { label: "Flannel", url: "/category/flannel" },
+          { label: "Round Necks", url: "/category/round-necks" },
         ],
       },
       {
         label: "Pants",
-        url: "pants",
+        url: "/category/categorypants",
         sub: [
-          { label: "Cargo Pants", url: "/cargo-pants" },
-          { label: "Jean Flare Pants", url: "/jean-flare-pants" },
+          { label: "Cargo Pants", url: "/category/cargo-pants" },
+          { label: "Jean Flare Pants", url: "/category/jean-flare-pants" },
         ],
       },
       {
         label: "Footwear",
-        url: "/footwear",
+        url: "/category/footwear",
         sub: [
-          { label: "Sneakers", url: "/cargo-pants" },
-          { label: "Corporate Shoes", url: "/corporate-shoes" },
+          { label: "Sneakers", url: "/category/cargo-pants" },
+          { label: "Corporate Shoes", url: "/category/corporate-shoes" },
         ],
       },
     ],
   },
   {
     id: "3",
+    label: "Collections",
+    url: "/collections",
+  },
+  {
+    id: "4",
     label: "Contact Us",
     url: "/contact-us",
   },
@@ -52,14 +57,14 @@ export const navLinks = [
     label: "Dashboard",
   },
   {
-    url: "/dashboard/menus",
-    icon: <Tag />,
-    label: "Menus",
+    url: "/dashboard/collections",
+    icon: <Shapes />,
+    label: "Collections",
   },
   {
-    url: "/dashboard/dishes",
-    icon: <Utensils />,
-    label: "Dishes",
+    url: "/dashboard/products",
+    icon: <Tag />,
+    label: "Products",
   },
   {
     url: "/dashboard/orders",

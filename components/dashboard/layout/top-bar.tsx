@@ -22,7 +22,7 @@ const TopBar = () => {
 
       <div className="flex gap-8 max-md:hidden">
         {navLinks.map((link) =>
-          <Link key={link.label} href={link.url} className={cn("flex gap-4 text-body-medium items-center", pathname === link.url ? "text-red-500" : "")}>
+          <Link key={link.label} href={link.url} className={cn("flex gap-4 text-body-medium items-center", pathname === link.url ? "text-gold" : "")}>
             <p>{link.label}</p>
           </Link>
         )}

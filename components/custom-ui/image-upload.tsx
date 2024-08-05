@@ -13,7 +13,6 @@ interface ImageUploadProps {
 }
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ value, onChange, onRemove }) => {
-  console.log(value)
   const onUpload = (result: any) => {
     onChange(result.info.secure_url);
   }

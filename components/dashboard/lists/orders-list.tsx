@@ -20,7 +20,7 @@ const OrderList = () => {
       setOrders(data);
     } catch (err) {
       setLoading(false);
-      console.log("[dish_GET]", err);
+      console.log("[orders_GET]", err);
     } finally {
       setLoading(false);
     }

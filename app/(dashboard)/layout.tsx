@@ -4,9 +4,9 @@ import { ToasterProvider } from "@/providers/ToasterProvider";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Lexi Kitchen Admin",
+  title: "Mr Tee Admin",
   description:
-    "The secure area to manage all admin relationed features for Lexi kitchen, such as Create Udate and Delete content on the frontend.",
+    "The secure area to manage all admin related features for Mr Tee, such as Create, Update and Delete content on the frontend.",
   icons: {
     icon: "/images/logo.png",
   },

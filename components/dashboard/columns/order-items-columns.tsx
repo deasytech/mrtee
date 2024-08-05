@@ -5,15 +5,15 @@ import Link from "next/link";
 
 export const columns: ColumnDef<TOrder>[] = [
   {
-    accessorKey: "dish",
-    header: "Dish",
+    accessorKey: "product",
+    header: "Product",
     cell: ({ row }) => {
       return (
         <Link
-          href={`/dashboard/dishes/${row.original.dish._id}`}
-          className="hover:text-red-500"
+          href={`/dashboard/products/${row.original.product._id}`}
+          className="hover:text-gold"
         >
-          {row.original.dish.title}
+          {row.original.product.title}
         </Link>
       );
     },
@@ -21,6 +21,10 @@ export const columns: ColumnDef<TOrder>[] = [
   {
     accessorKey: "size",
     header: "Size",
+  },
+  {
+    accessorKey: "color",
+    header: "Color",
   },
   {
     accessorKey: "quantity",

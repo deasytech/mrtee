@@ -12,21 +12,21 @@ export const POST = async (req: NextRequest) => {
 
     await connectToDB();
 
-    const user = await User.findOne({clerkId: userId});
+    const user = await User.findOne({ clerkId: userId });
     if (!user) {
       return new NextResponse("User not found!", { status: 404 });
     }
 
-    const { dishId } = await req.json();
-    if (!dishId) {
-      return new NextResponse("Dish id is required.", { status: 400 });
+    const { productId } = await req.json();
+    if (!productId) {
+      return new NextResponse("Product id is required.", { status: 400 });
     }
 
-    const isLiked = user.wishList.includes(dishId);
+    const isLiked = user.wishList.includes(productId);
     if (isLiked) {
-      user.wishList = user.wishList.filter((id: string) => id !== dishId);
+      user.wishList = user.wishList.filter((id: string) => id !== productId);
     } else {
-      user.wishList.push(dishId);
+      user.wishList.push(productId);
     }
 
     await user.save();

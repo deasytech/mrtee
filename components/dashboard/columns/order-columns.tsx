@@ -12,7 +12,7 @@ export const columns: ColumnDef<TOrderColumn>[] = [
       return (
         <Link
           href={`/dashboard/orders/${row.original._id}`}
-          className="hover:text-red-500"
+          className="hover:text-gold"
         >
           {row.original._id}
         </Link>
@@ -24,12 +24,12 @@ export const columns: ColumnDef<TOrderColumn>[] = [
     header: "Customer",
   },
   {
-    accessorKey: "dishes",
-    header: "Dishes",
+    accessorKey: "products",
+    header: "Products",
   },
   {
     accessorKey: "totalAmount",
-    header: "Total ($)",
+    header: "Total (₦)",
     cell: ({ row }) => <p>{naira(row.original.totalAmount)}</p>,
   },
   {

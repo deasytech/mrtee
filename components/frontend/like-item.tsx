@@ -6,17 +6,17 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
 
 interface LikeItemProps {
-  dishId: string;
+  productId: string;
   updateSignedInUser?: (updatedUser: TUser) => void;
 }
 
-const LikeItem = ({ dishId, updateSignedInUser }: LikeItemProps) => {
+const LikeItem = ({ productId, updateSignedInUser }: LikeItemProps) => {
   const { user } = useUser();
   const router = useRouter();
 
-  const [signedInUser, setSignedInUser] = useState<TUser | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+  const [ signedInUser, setSignedInUser ] = useState<TUser | null>(null);
+  const [ loading, setLoading ] = useState(false);
+  const [ isLiked, setIsLiked ] = useState(false);
 
   const getUser = useCallback(async () => {
     try {
@@ -24,24 +24,24 @@ const LikeItem = ({ dishId, updateSignedInUser }: LikeItemProps) => {
       const res = await fetch("/api/users");
       const data = await res.json();
       setSignedInUser(data);
-      setIsLiked(data.wishList.includes(dishId));
+      setIsLiked(data.wishList.includes(productId));
     } catch (error) {
       console.log("[users_GET]", error);
       setLoading(false);
     } finally {
       setLoading(false);
     }
-  }, [dishId]);
+  }, [ productId ]);
 
   useEffect(() => {
     if (user) {
       getUser();
     }
-  }, [user, getUser]);
+  }, [ user, getUser ]);
 
   const handleLike = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    
+
     try {
       if (!user) {
         router.push("/sign-in");
@@ -50,11 +50,11 @@ const LikeItem = ({ dishId, updateSignedInUser }: LikeItemProps) => {
         setLoading(true);
         const res = await fetch("/api/users/wishlist", {
           method: "POST",
-          body: JSON.stringify({ dishId: dishId })
+          body: JSON.stringify({ productId: productId })
         });
         const updatedUser = await res.json();
         setSignedInUser(updatedUser);
-        setIsLiked(updatedUser.wishList.includes(dishId));
+        setIsLiked(updatedUser.wishList.includes(productId));
         updateSignedInUser && updateSignedInUser(updatedUser);
       }
     } catch (error) {

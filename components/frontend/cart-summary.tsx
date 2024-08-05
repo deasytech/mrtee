@@ -46,7 +46,7 @@ const CartSummary = () => {
           <span>Total: </span>
           <span>{naira(total)}</span>
         </div>
-        <Button variant="outline" className="hover:bg-red-500 hover:text-white" onClick={handleCheckout}>Proceed to Checkout</Button>
+        <Button variant="outline" className="hover:bg-gold hover:text-white" onClick={handleCheckout}>Proceed to Checkout</Button>
       </div>
     </div>
   )

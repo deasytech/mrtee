@@ -13,7 +13,7 @@ import { X } from "lucide-react";
 
 interface MultiSelectProps {
   placeholder: string;
-  menus: TMenu[];
+  collections: TCollection[];
   value: string[];
   onChange: (value: string) => void;
   onRemove: (value: string) => void;
@@ -21,7 +21,7 @@ interface MultiSelectProps {
 
 const MultiSelect: React.FC<MultiSelectProps> = ({
   placeholder,
-  menus,
+  collections,
   value,
   onChange,
   onRemove,
@@ -29,16 +29,16 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   const [ inputValue, setInputValue ] = useState("");
   const [ open, setOpen ] = useState(false);
 
-  let selected: TMenu[];
+  let selected: TCollection[];
   if (value.length === 0) {
     selected = [];
   } else {
     selected = value.map((id) =>
-      menus.find((menu) => menu?._id === id)
-    ) as TMenu[];
+      collections.find((collection) => collection?._id === id)
+    ) as TCollection[];
   }
 
-  const selectables = menus.filter((menu) => !selected.includes(menu));
+  const selectables = collections.filter((collection) => !selected.includes(collection));
 
   return (
     <Command>

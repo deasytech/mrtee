@@ -34,15 +34,16 @@ export const POST = async (req: NextRequest) => {
 
       const retrieveSession = await stripe.checkout.sessions.retrieve(
         session.id,
-        { expand: ["line_items.data.price.product"]}
+        { expand: [ "line_items.data.price.product" ] }
       )
 
       const lineItems = await retrieveSession?.line_items?.data
 
       const orderItems = lineItems?.map((item: any) => {
         return {
-          dish: item.price.product.metadata.dishId,
+          product: item.price.product.metadata.productId,
           size: item.price.product.metadata.size || "N/A",
+          color: item.price.product.metadata.color || "N/A",
           quantity: item.quantity,
         }
       })
@@ -51,7 +52,7 @@ export const POST = async (req: NextRequest) => {
 
       const newOrder = new Order({
         customerClerkId: customerInfo.clerkId,
-        dishes: orderItems,
+        products: orderItems,
         shippingAddress,
         shippingRate: session?.shipping_cost?.shipping_rate,
         totalAmount: session.amount_total ? session.amount_total / 100 : 0,
@@ -66,7 +67,7 @@ export const POST = async (req: NextRequest) => {
       } else {
         customer = new Customer({
           ...customerInfo,
-          orders: [newOrder._id],
+          orders: [ newOrder._id ],
         })
       }
 

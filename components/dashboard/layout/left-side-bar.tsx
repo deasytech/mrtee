@@ -1,6 +1,5 @@
 "use client"
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { UserButton } from '@clerk/nextjs'
 import { usePathname } from 'next/navigation'
@@ -19,7 +18,7 @@ const LeftSideBar = () => {
 
       <div className="flex flex-col gap-12">
         {navLinks.map((link) =>
-          <Link key={link.label} href={link.url} className={cn("flex gap-4 text-body-medium items-center", pathname === link.url ? "text-red-500" : "")}>
+          <Link key={link.label} href={link.url} className={cn("flex gap-4 text-body-medium items-center", pathname === link.url ? "text-gold" : "")}>
             {link.icon}
             <p>{link.label}</p>
           </Link>

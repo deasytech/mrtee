@@ -3,9 +3,10 @@ import { toast } from "react-hot-toast";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 interface CartItem {
-  item: TDish;
+  item: TProduct;
   quantity: number;
   size?: string;
+  color?: string;
 }
 
 interface CartStore {
@@ -22,7 +23,7 @@ const useCart = create(
     (set, get) => ({
       cartItems: [],
       addItem: (data: CartItem) => {
-        const { item, quantity, size } = data;
+        const { item, quantity, size, color } = data;
         const currentItems = get().cartItems; // all the items already in cart
         const isExisting = currentItems.find(
           (cartItem) => cartItem.item._id === item._id
@@ -32,7 +33,7 @@ const useCart = create(
           return toast("Item already in cart");
         }
 
-        set({ cartItems: [...currentItems, { item, quantity, size }] });
+        set({ cartItems: [ ...currentItems, { item, quantity, size, color } ] });
         toast.success("Item added to cart", { icon: "🛒" });
       },
       removeItem: (idToRemove: String) => {

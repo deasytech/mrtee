@@ -23,12 +23,12 @@ interface DeleteProps {
 }
 
 const Delete: React.FC<DeleteProps> = ({ item, id }) => {
-  const [loading, setLoading] = useState(false);
+  const [ loading, setLoading ] = useState(false);
 
   const onDelete = async () => {
     try {
       setLoading(true)
-      const itemType = item === "dish" ? "dishes" : "menus"
+      const itemType = item === "product" ? "products" : "collections"
       const res = await fetch(`/api/${itemType}/${id}`, {
         method: "DELETE",
       })

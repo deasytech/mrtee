@@ -13,51 +13,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-
-const mainMenu = [
-  {
-    id: "1",
-    label: "Home",
-    url: "/",
-  },
-  {
-    id: "2",
-    label: "Luxury Store",
-    url: "/luxury-store",
-    sub: [
-      {
-        label: "Shirts",
-        url: "shirts",
-        sub: [
-          { label: "Sweatshirts", url: "/sweatshirts" },
-          { label: "Flannel", url: "/flannel" },
-          { label: "Round Necks", url: "/round-necks" },
-        ],
-      },
-      {
-        label: "Pants",
-        url: "pants",
-        sub: [
-          { label: "Cargo Pants", url: "/cargo-pants" },
-          { label: "Jean Flare Pants", url: "/jean-flare-pants" },
-        ],
-      },
-      {
-        label: "Footwear",
-        url: "/footwear",
-        sub: [
-          { label: "Sneakers", url: "/cargo-pants" },
-          { label: "Corporate Shoes", url: "/corporate-shoes" },
-        ],
-      },
-    ],
-  },
-  {
-    id: "3",
-    label: "Contact Us",
-    url: "/contact-us",
-  },
-]
+import { mainMenu } from "@/lib/constants"
 
 export function MainMenu() {
   return (

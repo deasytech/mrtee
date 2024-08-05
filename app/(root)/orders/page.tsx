@@ -35,11 +35,11 @@ const Orders = async () => {
             </div>
 
             <div className="flex flex-col gap-5">
-              {order.dishes.map((orderItem: TOrder, index: number) => (
+              {order.products.map((orderItem: TOrder, index: number) => (
                 <div key={index} className="flex gap-4">
                   <Image
-                    src={orderItem.dish.media[ 0 ]}
-                    alt={orderItem.dish.title}
+                    src={orderItem.product.media[ 0 ]}
+                    alt={orderItem.product.title}
                     width={100}
                     height={100}
                     className="w-32 h-32 object-cover rounded-lg"
@@ -48,7 +48,7 @@ const Orders = async () => {
                     <p className="text-small-medium">
                       Title:{" "}
                       <span className="text-small-bold">
-                        {orderItem.dish.title}
+                        {orderItem.product.title}
                       </span>
                     </p>
                     {orderItem.size && (
@@ -61,7 +61,7 @@ const Orders = async () => {
                     )}
                     <p className="text-small-medium">
                       Unit price:{" "}
-                      <span className="text-small-bold">{naira(orderItem.dish.price)}</span>
+                      <span className="text-small-bold">{naira(orderItem.product.price)}</span>
                     </p>
                     <p className="text-small-medium">
                       Quantity:{" "}

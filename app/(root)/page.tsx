@@ -1,11 +1,11 @@
-import DishCard from "@/components/frontend/cards/dish-card";
+import ProductCard from "@/components/frontend/cards/product-card";
 import { Button } from "@/components/ui/button";
-import { getLastestDishes } from "@/lib/actions";
+import { getLatestProducts } from "@/lib/actions";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
-  const dishes = await getLastestDishes(5);
+  const products = await getLatestProducts(10);
 
   return (
     <>
@@ -109,12 +109,12 @@ export default async function Home() {
 
       <section className="flex flex-col items-start gap-6 py-12 px-4 bg-slate-100">
         <p className="text-heading4-bold font-light self-center">FEATURED PRODUCTS</p>
-        {!dishes || dishes.length === 0 ? (
+        {!products || products.length === 0 ? (
           <p className="text-body-bold self-center">No product found</p>
         ) : (
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-start gap-4">
-            {dishes.map((dish: TDish) => (
-              <DishCard key={dish._id} dish={dish} />
+            {products.map((product: TProduct) => (
+              <ProductCard key={product._id} product={product} />
             ))}
           </div>
         )}

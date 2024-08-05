@@ -54,7 +54,7 @@ const Navbar = () => {
 
         <Menu className="cursor-pointer lg:hidden" onClick={() => setDropdownMenu(!dropdownMenu)} />
         {dropdownMenu && (
-          <div className="absolute top-10 right-5 flex flex-col gap-2 p-3 rounded-lg border bg-white text-base-bold">
+          <div className="absolute top-10 right-5 flex flex-col gap-2 p-3 rounded-lg border bg-black text-base-bold">
             <Link href="/" className="hover:text-gold px-2">Home</Link>
             <Link href={cn(user ? "/wishlist" : "/sign-in")} className="hover:text-gold px-2">Wishlist</Link>
             <Link href={cn(user ? "/orders" : "/sign-in")} className="hover:text-gold px-2">Orders</Link>

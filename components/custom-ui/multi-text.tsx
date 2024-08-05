@@ -19,7 +19,7 @@ const MultiText: React.FC<MultiTextProps> = ({
   onChange,
   onRemove,
 }) => {
-  const [inputValue, setInputValue] = useState("");
+  const [ inputValue, setInputValue ] = useState("");
 
   const addValue = (item: string) => {
     onChange(item);

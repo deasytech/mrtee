@@ -1,12 +1,6 @@
-import CustomerList from '@/components/dashboard/lists/customer-list'
-import Customer from '@/lib/models/Customer'
-import { connectToDB } from '@/lib/mongoDB'
+import CustomerList from '@/components/dashboard/lists/customer-list';
 
-const Customers = async () => {
-  await connectToDB()
-
-  const customers = await Customer.find().sort({ createdAt: "desc" })
-
+const Customers = () => {
   return (
     <CustomerList />
   )

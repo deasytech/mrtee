@@ -16,7 +16,7 @@ export const GET = async (req: NextRequest) => {
       return {
         _id: order._id,
         customer: customer.name,
-        dishes: order.dishes.length,
+        products: order.products.length,
         totalAmount: order.totalAmount,
         createdAt: format(order.createdAt, "MMM do, yyyy")
       }

@@ -1,8 +1,8 @@
 "use client"
 
 import Loader from "@/components/custom-ui/loader"
-import DishCard from "@/components/frontend/cards/dish-card"
-import { getDishDetails } from "@/lib/actions"
+import ProductCard from "@/components/frontend/cards/product-card"
+import { getProductDetails } from "@/lib/actions"
 import { useUser } from "@clerk/nextjs"
 import Image from "next/image"
 import { useCallback, useEffect, useState } from "react"
@@ -10,9 +10,9 @@ import { useCallback, useEffect, useState } from "react"
 const WishList = () => {
   const { user } = useUser();
 
-  const [loading, setLoading] = useState(false)
-  const [signedInUser, setSignedInUser] = useState<TUser | null>(null)
-  const [wishlist, setWishlist] = useState<TDish[]>([])
+  const [ loading, setLoading ] = useState(false)
+  const [ signedInUser, setSignedInUser ] = useState<TUser | null>(null)
+  const [ wishlist, setWishlist ] = useState<TProduct[]>([])
 
   const getUser = async () => {
     try {
@@ -29,27 +29,27 @@ const WishList = () => {
     if (user) {
       getUser()
     }
-  }, [user])
+  }, [ user ])
 
-  const getWishlistDishes = useCallback(async () => {
+  const getWishlistProducts = useCallback(async () => {
     setLoading(true)
 
     if (!signedInUser) return
 
-    const wishlistDishes = await Promise.all(signedInUser.wishList.map(async (dishId) => {
-      const res = await getDishDetails(dishId)
+    const wishlistProducts = await Promise.all(signedInUser.wishList.map(async (productId) => {
+      const res = await getProductDetails(productId)
       return res;
     }));
 
-    setWishlist(wishlistDishes)
+    setWishlist(wishlistProducts)
     setLoading(false)
-  }, [signedInUser])
+  }, [ signedInUser ])
 
   useEffect(() => {
     if (signedInUser) {
-      getWishlistDishes()
+      getWishlistProducts()
     }
-  }, [signedInUser, getWishlistDishes])
+  }, [ signedInUser, getWishlistProducts ])
 
   const updateSignedInUser = (updatedUser: TUser) => {
     setSignedInUser(updatedUser)
@@ -72,8 +72,8 @@ const WishList = () => {
       )}
 
       <div className="flex flex-wrap justify-center gap-16">
-        {wishlist.map((dish) => (
-          <DishCard key={dish._id} dish={dish} updateSignedInUser={updateSignedInUser}/>
+        {wishlist.map((product) => (
+          <ProductCard key={product._id} product={product} updateSignedInUser={updateSignedInUser} />
         ))}
       </div>
     </div>

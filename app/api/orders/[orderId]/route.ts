@@ -1,22 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import Customer from "@/lib/models/Customer";
 import Order from "@/lib/models/Order";
-import Dish from "@/lib/models/Dish";
+import Product from "@/lib/models/Product";
 import { connectToDB } from "@/lib/mongoDB";
 
-export const GET = async (req: NextRequest, { params }: { params: { orderId: String }}) => {
+export const GET = async (req: NextRequest, { params }: { params: { orderId: String } }) => {
   try {
     await connectToDB()
 
     const orderDetails = await Order.findById(params.orderId).populate({
-      path: "dishes.dish",
-      model: Dish
+      path: "products.product",
+      model: Product
     })
     if (!orderDetails) {
       return new NextResponse(JSON.stringify({ message: "Order Not Found" }), { status: 404 })
     }
 
-    const customer = await Customer.findOne({ clerkId: orderDetails.customerClerkId})
+    const customer = await Customer.findOne({ clerkId: orderDetails.customerClerkId })
 
     return NextResponse.json({ orderDetails, customer }, { status: 200 })
   } catch (err) {

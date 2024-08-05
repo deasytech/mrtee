@@ -9,12 +9,6 @@ export const metadata: Metadata = {
     "Experience unparalleled elegance with Mr Tee Luxury Store. Our fashion house specializes in high-quality male and female clothing and footwear. Discover a curated selection of stylish and sophisticated pieces perfect for any occasion.",
   keywords:
     "Mr Tee Luxury Store, Fashion, Male Clothing, Female Clothing, Footwear, High-Quality Fashion, Stylish Clothing, Sophisticated Fashion, Men's Fashion, Women's Fashion",
-  authors: [
-    {
-      name: "Deasytech Solutions",
-      url: "https://deasytechsolutions.com",
-    },
-  ],
   twitter: {
     title: "Mr Tee Luxury Store",
     description:

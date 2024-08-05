@@ -4,34 +4,40 @@ import { connectToDB } from "@/lib/mongoDB";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export const getMenus = async () => {
-  const menus = await fetch(`${API_URL}/menus`);
-  return await menus.json();
+export const getCollections = async () => {
+  const collections = await fetch(`${API_URL}/collections`);
+  return await collections.json();
 }
 
-export const getMenuDetails = async (menuId: string) => {
-  const menu = await fetch(`${API_URL}/menus/${menuId}`)
-  return await menu.json()
+export const getCollectionDetails = async (collectionId: string) => {
+  const collection = await fetch(`${API_URL}/collections/${collectionId}`)
+  return await collection.json()
 }
 
-export const getLastestDishes = async (limit: number) => {
-  const dishes = await fetch(`${API_URL}/dishes?limit=${limit}`);
-  return await dishes.json();
+export const getLatestProducts = async (limit: number) => {
+  try {
+    const res = await fetch(`${API_URL}/products?limit=${limit}`);
+    const products = await res.json();
+    return products;
+  } catch (error) {
+    console.error("Error fetching latest products:", error);
+    return [];
+  }
 }
 
-export const getDishes = async () => {
-  const dishes = await fetch(`${API_URL}/dishes`);
-  return await dishes.json();
+export const getProducts = async () => {
+  const products = await fetch(`${API_URL}/products`);
+  return await products.json();
 }
 
-export const getDishDetails = async (dishId: string) => {
-  const dish = await fetch(`${API_URL}/dishes/${dishId}`);
-  return await dish.json();
+export const getProductDetails = async (productId: string) => {
+  const product = await fetch(`${API_URL}/products/${productId}`);
+  return await product.json();
 }
 
-export const getSearchedDishes = async (query: string) => {
-  const searchedDishes = await fetch(`${API_URL}/search/${query}`)
-  return await searchedDishes.json()
+export const getSearchedProducts = async (query: string) => {
+  const searchedProducts = await fetch(`${API_URL}/search/${query}`)
+  return await searchedProducts.json()
 }
 
 export const getOrders = async (customerId: string) => {
@@ -39,9 +45,10 @@ export const getOrders = async (customerId: string) => {
   return await orders.json()
 }
 
-export const getRelatedDishes = async (dishId: string) => {
-  const relatedDishes = await fetch(`${API_URL}/dishes/${dishId}/related`)
-  return await relatedDishes.json()
+export const getRelatedProducts = async (productId: string) => {
+  console.log(productId)
+  const relatedProducts = await fetch(`${API_URL}/products/${productId}/related`)
+  return await relatedProducts.json()
 }
 
 export const getTotalSales = async () => {
@@ -65,16 +72,16 @@ export const getSalesPerMonth = async () => {
 
   const salesPerMonth = orders.reduce((acc, order) => {
     const monthIndex = new Date(order.createdAt).getMonth(); // 0 for Janruary --> 11 for December
-    acc[monthIndex] = (acc[monthIndex] || 0) + order.totalAmount;
+    acc[ monthIndex ] = (acc[ monthIndex ] || 0) + order.totalAmount;
     // For June
     // acc[5] = (acc[5] || 0) + order.totalAmount (orders have monthIndex 5)
     return acc
   }, {})
 
-  const graphData = Array.from({ length: 12}, (_, i) => {
+  const graphData = Array.from({ length: 12 }, (_, i) => {
     const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date(0, i))
     // if i === 5 => month = "Jun"
-    return { name: month, sales: salesPerMonth[i] || 0 }
+    return { name: month, sales: salesPerMonth[ i ] || 0 }
   })
 
   return graphData
