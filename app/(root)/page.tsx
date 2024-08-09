@@ -9,8 +9,8 @@ export default async function Home() {
 
   return (
     <>
-      <section className="flex flex-col md:flex-row gap-4 md:gap-6 mx-4">
-        <div className="w-full relative">
+      <section className="">
+        {/* <div className="w-full relative">
           <Image src="/images/banner-1.jpg" alt="Women luxury" width={880} height={500} className="w-full object-cover" />
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white">
             <p className="text-base-bold font-light">MR TEE LUXURY STORE</p>
@@ -19,9 +19,9 @@ export default async function Home() {
               <Button variant="outline" className="bg-transparent hover:bg-gold border-t-0 border-r-0 border-l-0 border-b border-white">Discover Now</Button>
             </Link>
           </div>
-        </div>
+        </div> */}
         <div className="w-full relative">
-          <Image src="/images/banner-2.jpg" alt="Women luxury" width={880} height={500} className="w-full object-cover" />
+          <Image src="/images/banner-2.jpg" alt="Women luxury" width={880} height={500} className="w-full object-cover max-h-[600px]" />
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white">
             <p className="text-base-bold font-light">MR TEE LUXURY STORE</p>
             <h3 className="text-heading2-bold">SHOP MEN'S</h3>
@@ -32,7 +32,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col md:flex-row gap-5 py-4 mx-4">
+      {/* <section className="flex flex-col md:flex-row gap-5 py-4 mx-4">
         <div className="w-full flex">
           <Link href="#" className="w-full relative">
             <Image
@@ -88,7 +88,7 @@ export default async function Home() {
           </Link>
         </div>
 
-      </section>
+      </section> */}
 
       <section className="flex flex-col items-center gap-10 py-8 mx-4">
         <div className="flex flex-wrap justify-start gap-16">
