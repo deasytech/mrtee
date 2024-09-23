@@ -1,4 +1,5 @@
 import ProductCard from "@/components/frontend/cards/product-card";
+import Testimonials from "@/components/frontend/testimonials";
 import { Button } from "@/components/ui/button";
 import { getLatestProducts } from "@/lib/actions";
 import Image from "next/image";
@@ -119,6 +120,8 @@ export default async function Home() {
           </div>
         )}
       </section>
+
+      <Testimonials />
     </>
   );
 }
