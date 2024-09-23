@@ -17,7 +17,7 @@ const CollectionDetails = ({ collectionId }: { collectionId: string }) => {
       setCollectionDetails(data)
       setLoading(false)
     } catch (err) {
-      console.log("[collectionId_GET]", err)
+      console.error("[collectionId_GET]", err)
       setLoading(false)
     }
   }, [ collectionId ])

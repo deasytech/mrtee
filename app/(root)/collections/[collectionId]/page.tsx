@@ -1,28 +1,28 @@
 import ProductCard from "@/components/frontend/cards/product-card";
-import { getProductDetails } from "@/lib/actions";
+import { getCollectionDetails } from "@/lib/actions";
 import Image from "next/image";
 
-const ProductDetails = async ({
+const CollectionDetails = async ({
   params,
 }: {
-  params: { productId: string };
+  params: { collectionId: string };
 }) => {
-  const productDetails = await getProductDetails(params.productId);
+  const collectionDetails = await getCollectionDetails(params.collectionId);
 
   return (
     <div className="flex flex-col items-center gap-8">
       <Image
-        src={productDetails.image}
+        src={collectionDetails.image}
         width={1500}
         height={1000}
         alt="product"
         className="w-full object-contain"
       />
       <div className="flex flex-col items-center gap-8 px-10">
-        <p className="text-heading3-bold text-grey-2">{productDetails.title}</p>
-        <p className="text-body-normal text-grey-2 text-center max-w-[900px]">{productDetails.description}</p>
+        <p className="text-heading3-bold text-grey-2">{collectionDetails.title}</p>
+        <p className="text-body-normal text-grey-2 text-center max-w-[900px]">{collectionDetails.description}</p>
         <div className="flex flex-wrap gap-16 justify-center">
-          {productDetails.products.map((product: TProduct) => (
+          {collectionDetails.products.map((product: TProduct) => (
             <ProductCard key={product._id} product={product} />
           ))}
         </div>
@@ -31,6 +31,6 @@ const ProductDetails = async ({
   );
 };
 
-export default ProductDetails;
+export default CollectionDetails;
 
 export const dynamic = "force-dynamic";
