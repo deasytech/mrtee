@@ -155,6 +155,9 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      backgroundImage: {
+        "parallax": "url('../public/images/banner-2.jpg')"
+      }
     },
   },
   plugins: [ require("tailwindcss-animate"), require("tailwind-scrollbar-hide") ],

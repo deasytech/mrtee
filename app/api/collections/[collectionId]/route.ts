@@ -11,8 +11,11 @@ export const GET = async (
 ) => {
   try {
     await connectToDB();
-
-    const collection = await Collection.findById(params.collectionId).populate({ path: "products", model: Product });
+    const collection = await Collection.findById(params.collectionId).populate({
+      path: "products",
+      model: "Product",
+      options: { strictPopulate: false },
+    });
 
     if (!collection) {
       return new NextResponse(

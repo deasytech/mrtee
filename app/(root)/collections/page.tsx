@@ -4,24 +4,18 @@ import Link from "next/link";
 
 const MenuPage = async () => {
   const collections = await getCollections();
-  console.log(collections)
 
   return (
     <section className="w-full">
-      <Image
-        src="/images/collection.png"
-        width={1500}
-        height={1000}
-        alt="menu"
-        className="w-full h-full object-cover object-right-top"
-      />
+      <div className="flex flex-col gap-3 items-center justify-center h-96 bg-cover bg-fixed bg-parallax w-full">
+        <h1 className="text-heading1-bold text-white">All Collections</h1>
+      </div>
       <div className="border-b -mx-10 border-gray-500" />
-      <div className="px-10 max-sm:px-3">
-        <p className="text-heading3-bold my-10">Collections</p>
+      <div className="px-10 max-sm:px-3 mt-10">
+        {/* <p className="text-heading3-bold my-10">Collections</p> */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {collections.map((collection: TCollection) => (
-            // <Link href={`/collections/${collection._id}`} key={collection._id} className="flex flex-col gap-10 mb-5">
-            <Link href="#" key={collection._id} className="flex flex-col gap-10 mb-5">
+            <Link href={`/collections/${collection._id}`} key={collection._id} className="flex flex-col gap-10 mb-5">
               <Image
                 src={collection.image}
                 alt={collection.title}

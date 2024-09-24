@@ -8,19 +8,14 @@ const CollectionDetails = async ({
   params: { collectionId: string };
 }) => {
   const collectionDetails = await getCollectionDetails(params.collectionId);
-
+  console.log(collectionDetails)
   return (
     <div className="flex flex-col items-center gap-8">
-      <Image
-        src={collectionDetails.image}
-        width={1500}
-        height={1000}
-        alt="product"
-        className="w-full object-contain"
-      />
+      <div className="flex flex-col gap-3 items-center justify-center h-96 bg-cover bg-fixed bg-parallax w-full">
+        <h1 className="text-heading1-bold text-white">{collectionDetails.title}</h1>
+        <p className="text-body-normal text-gray-100 text-center max-w-[900px]">{collectionDetails.description}</p>
+      </div>
       <div className="flex flex-col items-center gap-8 px-10">
-        <p className="text-heading3-bold text-grey-2">{collectionDetails.title}</p>
-        <p className="text-body-normal text-grey-2 text-center max-w-[900px]">{collectionDetails.description}</p>
         <div className="flex flex-wrap gap-16 justify-center">
           {collectionDetails.products.map((product: TProduct) => (
             <ProductCard key={product._id} product={product} />
