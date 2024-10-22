@@ -1,7 +1,6 @@
 import Customer from "@/lib/models/Customer";
 import Order from "@/lib/models/Order";
 import { connectToDB } from "@/lib/mongoDB";
-import { toTitleCase } from "../utils";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -37,8 +36,8 @@ export const getProductDetails = async (productId: string) => {
 }
 
 export const getProductsByCategory = async (category: string) => {
-  console.log("products by category: ", toTitleCase(category));
-  const products = await fetch(`${API_URL}/products/category/${toTitleCase(category)}`);
+  console.log("products by category: ", category);
+  const products = await fetch(`${API_URL}/products/category/${category}`);
   return await products.json();
 }
 
