@@ -32,7 +32,7 @@ export const mainMenu = [
         label: "Footwear",
         url: "/category/footwear",
         sub: [
-          { label: "Sneakers", url: "/category/cargo-pants" },
+          { label: "Sneakers", url: "/category/sneakers" },
           { label: "Corporate Shoes", url: "/category/corporate-shoes" },
         ],
       },

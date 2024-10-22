@@ -18,6 +18,20 @@ const config = {
       },
     },
     fontSize: {
+      "heading1": [
+        "42px",
+        {
+          lineHeight: "100%",
+          fontWeight: "400",
+        },
+      ],
+      "heading4": [
+        "20px",
+        {
+          lineHeight: "100%",
+          fontWeight: "400",
+        },
+      ],
       "heading1-bold": [
         "50px",
         {

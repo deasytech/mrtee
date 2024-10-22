@@ -60,7 +60,7 @@ const Navbar = () => {
             <Link href={cn(user ? "/orders" : "/sign-in")} className="hover:text-gold px-2">Orders</Link>
             <Link
               href="/cart"
-              className="flex items-center gap-3 border rounded-lg px-2 py-1 hover:bg-gold hover:text-white"
+              className="flex items-center gap-3 border rounded-lg px-2 py-1 hover:text-gold"
             >
               <ShoppingCart />
               <p className="text-base-bold">Cart ({cart.cartItems.length})</p>

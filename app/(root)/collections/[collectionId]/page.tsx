@@ -8,7 +8,7 @@ const CollectionDetails = async ({
   params: { collectionId: string };
 }) => {
   const collectionDetails = await getCollectionDetails(params.collectionId);
-  console.log(collectionDetails)
+  // console.log(collectionDetails)
   return (
     <div className="flex flex-col items-center gap-8">
       <div className="flex flex-col gap-3 items-center justify-center h-96 bg-cover bg-fixed bg-parallax w-full">

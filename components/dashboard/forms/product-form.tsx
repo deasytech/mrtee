@@ -16,6 +16,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import ImageUpload from "@/components/custom-ui/image-upload"
@@ -203,13 +210,22 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData }) => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Category</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Category"
-                      {...field}
-                      onKeyDown={handleKeyPress}
-                    />
-                  </FormControl>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a product category" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="sweat-shirts">Sweat Shirts</SelectItem>
+                      <SelectItem value="flannel">Flannel</SelectItem>
+                      <SelectItem value="round-necks">Round Necks</SelectItem>
+                      <SelectItem value="cargo-pants">Cargo Pants</SelectItem>
+                      <SelectItem value="jean-flare-pants">Jean Flare Pants</SelectItem>
+                      <SelectItem value="sneakers">Sneakers</SelectItem>
+                      <SelectItem value="corporate-shoes">Corporate Shoes</SelectItem>
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}

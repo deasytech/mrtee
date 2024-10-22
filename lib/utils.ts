@@ -42,3 +42,16 @@ export const fancyDate = (rawDate: string | number | Date): string => {
 
   return `${monthName} ${formattedDay}, ${year}`;
 };
+
+export const toTitleCase = (str: any) => {
+  return str.toLowerCase().split(' ').map((word: any) => {
+    return (word.charAt(0).toUpperCase() + word.slice(1));
+  }).join(' ');
+}
+
+export const removeHyphenAndCapitalize = (input: string): string => {
+  return input
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+}
