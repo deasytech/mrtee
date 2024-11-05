@@ -5,6 +5,7 @@ import { naira } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
+import Link from "next/link";
 
 const CartSummary = () => {
   const cart = useCart();
@@ -19,25 +20,8 @@ const CartSummary = () => {
     name: user?.fullName,
   };
 
-  const handleCheckout = async () => {
-    try {
-      if (!user) {
-        router.push("sign-in");
-      } else {
-        const res = await fetch("/api/checkout", {
-          method: "POST",
-          body: JSON.stringify({ cartItems: cart.cartItems, customer }),
-        });
-        const data = await res.json();
-        window.location.href = data.url;
-      }
-    } catch (err) {
-      console.log("[checkout_POST]", err);
-    }
-  };
-
   return (
-    <div className="w-1/3 max-lg:w-full flex flex-col gap-8 bg-gray-300 rounded-lg px-4 py-5">
+    <div className="w-1/3 max-lg:w-full flex flex-col gap-8 bg-gray-100 border border-dashed border-gray-300 px-4 py-5">
       <p className="text-heading4-bold pb-4">
         Summary <span>{`(${cart.cartItems.length} ${cart.cartItems.length > 1 ? "Items" : "Item"})`}</span>
       </p>
@@ -46,7 +30,9 @@ const CartSummary = () => {
           <span>Total: </span>
           <span>{naira(total)}</span>
         </div>
-        <Button variant="outline" className="hover:bg-gold hover:text-white" onClick={handleCheckout}>Proceed to Checkout</Button>
+        <Link href="/checkout" className="w-full">
+          <Button variant="outline" className="hover:bg-gold rounded-none hover:text-white w-full text-gold border border-gold bg-transparent">Proceed to Checkout</Button>
+        </Link>
       </div>
     </div>
   )

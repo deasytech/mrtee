@@ -16,6 +16,14 @@ import {
 import { mainMenu } from "@/lib/constants"
 
 export function MainMenu() {
+  const [ isMounted, setIsMounted ] = React.useState(false)
+
+  React.useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  if (!isMounted) return null
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -28,8 +36,8 @@ export function MainMenu() {
                   <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                     {item.sub.map((subItem) => (
                       <li key={subItem.label}>
-                        <NavigationMenuLink asChild>
-                          <Link href={subItem.url} className={cn(
+                        <Link href={subItem.url} passHref>
+                          <NavigationMenuLink className={cn(
                             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           )}>
                             <div className="text-sm font-medium leading-none">
@@ -39,26 +47,26 @@ export function MainMenu() {
                               <ul className="pl-4">
                                 {subItem.sub.map((nestedItem) => (
                                   <li key={nestedItem.url}>
-                                    <NavigationMenuLink asChild>
-                                      <Link href={nestedItem.url} className={cn(
+                                    <Link href={nestedItem.url} passHref>
+                                      <NavigationMenuLink className={cn(
                                         "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                       )}>
                                         {nestedItem.label}
-                                      </Link>
-                                    </NavigationMenuLink>
+                                      </NavigationMenuLink>
+                                    </Link>
                                   </li>
                                 ))}
                               </ul>
                             )}
-                          </Link>
-                        </NavigationMenuLink>
+                          </NavigationMenuLink>
+                        </Link>
                       </li>
                     ))}
                   </ul>
                 </NavigationMenuContent>
               </>
             ) : (
-              <Link href={item.url} legacyBehavior passHref>
+              <Link href={item.url} passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   {item.label}
                 </NavigationMenuLink>
@@ -72,13 +80,13 @@ export function MainMenu() {
 }
 
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
+  React.ElementRef<"div">,
+  React.ComponentPropsWithoutRef<"div">
 >(({ className, title, children, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <div
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
@@ -90,7 +98,7 @@ const ListItem = React.forwardRef<
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        </a>
+        </div>
       </NavigationMenuLink>
     </li>
   )
