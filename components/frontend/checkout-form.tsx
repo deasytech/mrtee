@@ -43,21 +43,14 @@ const CheckoutForm = () => {
     name: user?.fullName,
   };
 
-  const publicKey = process.env.NEXT_PUBLIC_PS_PUBLIC_KEY;
-
-  const [ initializePayment, setInitializePayment ] = useState<any>();
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && publicKey) {
-      setInitializePayment(() => usePaystackPayment({
-        reference: new Date().getTime().toString(),
-        email: customer.email || "",
-        amount: total * 100,
-        publicKey: publicKey,
-        currency: "NGN",
-      }));
-    }
-  }, [ publicKey, customer.email, total ]);
+  // Initialize Paystack payment configuration
+  const initializePayment = usePaystackPayment({
+    reference: new Date().getTime().toString(),
+    email: customer.email || "",
+    amount: total * 100,
+    publicKey: process.env.NEXT_PUBLIC_PS_PUBLIC_KEY!,
+    currency: "NGN",
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -107,7 +100,7 @@ const CheckoutForm = () => {
         total,
         customer,
       };
-      console.log(orderData)
+      console.log(orderData);
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -116,9 +109,7 @@ const CheckoutForm = () => {
 
       if (res.ok) {
         toast.success("Order stored");
-        if (initializePayment) {
-          initializePayment({ onSuccess, onClose });
-        }
+        initializePayment({ onSuccess, onClose }); // Use the initialized function
       } else {
         throw new Error("Failed to store order");
       }
