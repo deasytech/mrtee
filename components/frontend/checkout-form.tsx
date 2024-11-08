@@ -30,6 +30,7 @@ const formSchema = z.object({
 const CheckoutForm = () => {
   const router = useRouter();
   const [ loading, setLoading ] = useState(false);
+  const [ payEmail, setPayEmail ] = useState("");
   const cart = useCart();
   const { user } = useUser();
   const total = cart.cartItems.reduce(
@@ -46,7 +47,7 @@ const CheckoutForm = () => {
   // Initialize Paystack payment configuration
   const initializePayment = usePaystackPayment({
     reference: new Date().getTime().toString(),
-    email: customer.email || "",
+    email: customer.email || payEmail,
     amount: total * 100,
     publicKey: process.env.NEXT_PUBLIC_PS_PUBLIC_KEY!,
     currency: "NGN",
@@ -109,6 +110,7 @@ const CheckoutForm = () => {
 
       if (res.ok) {
         toast.success("Order stored");
+        setPayEmail(values.email);
         initializePayment({ onSuccess, onClose }); // Use the initialized function
       } else {
         throw new Error("Failed to store order");
