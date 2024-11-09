@@ -31,6 +31,7 @@ const CheckoutForm = () => {
   const router = useRouter();
   const [ loading, setLoading ] = useState(false);
   const [ payEmail, setPayEmail ] = useState("");
+  const [ orderId, setOrderId ] = useState("")
   const cart = useCart();
   const { user } = useUser();
   const total = cart.cartItems.reduce(
@@ -51,6 +52,15 @@ const CheckoutForm = () => {
     amount: total * 100,
     publicKey: process.env.NEXT_PUBLIC_PS_PUBLIC_KEY!,
     currency: "NGN",
+    metadata: {
+      custom_fields: [
+        {
+          display_name: 'Order Number',
+          variable_name: 'order_number',
+          value: orderId
+        }
+      ]
+    }
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -110,6 +120,9 @@ const CheckoutForm = () => {
 
       if (res.ok) {
         toast.success("Order stored");
+        const data = await res.json();
+        console.log(data)
+        setOrderId(data._id);
         setPayEmail(values.email);
         initializePayment({ onSuccess, onClose }); // Use the initialized function
       } else {
