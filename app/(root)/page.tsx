@@ -95,7 +95,7 @@ export default async function Home() {
         <div className="flex flex-wrap justify-start gap-16">
           <div className="space-y-2">
             <h4 className="uppercase text-heading4-bold font-semibold">PAYMENT & DELIVERY</h4>
-            <p className="text-gray-500">Free shipping for orders over ₦250,000</p>
+            <p className="text-gray-500">Payment Validates Order</p>
           </div>
           <div className="space-y-2">
             <h4 className="uppercase text-heading4-bold font-semibold">RETURN & REFUND</h4>

@@ -56,8 +56,7 @@ const Footer = () => {
               <p className="text-gray-400 text-small-medium mb-2">Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan</p>
               <Input className="bg-white text-gray-800 border-gray-700 rounded-none" placeholder="Enter your email address" />
               <div className="space-y-3 mt-6">
-                <p className="text-small-medium">Got Question? Call us 24/7</p>
-                <Image src="/images/payments.png" alt="payment" width={272} height={20} />
+                <Image src="/images/paystack-ii.webp" alt="payment" className="bg-white rounded-md" width={272} height={20} />
               </div>
             </div>
           </div>
