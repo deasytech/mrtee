@@ -38,7 +38,7 @@ const CheckoutForm = () => {
     (acc, item) => acc + item.item.price * item.quantity,
     0
   );
-  console.log(cart)
+
   const customer = {
     clerkId: user?.id,
     email: user?.emailAddresses[ 0 ]?.emailAddress,
@@ -82,7 +82,6 @@ const CheckoutForm = () => {
   };
 
   const onSuccess = (reference: any) => {
-    console.log("Payment successful", reference);
     toast.success("Payment successful!");
     cart.clearCart();
     setLoading(false);
@@ -90,7 +89,6 @@ const CheckoutForm = () => {
   };
 
   const onClose = () => {
-    console.log("Payment dialog closed");
     setLoading(false);
     toast.error("Payment was not completed.");
   };
@@ -112,7 +110,6 @@ const CheckoutForm = () => {
         total,
         customer,
       };
-      console.log(orderData);
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -61,7 +61,6 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData }) => {
         method: "GET",
       });
       const data = await res.json();
-      console.log(data)
       setCollections(data);
     } catch (err) {
       console.log("[collections_GET]", err);
