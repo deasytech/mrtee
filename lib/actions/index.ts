@@ -41,6 +41,11 @@ export const getProductsByCategory = async (category: string) => {
   return await products.json();
 }
 
+export const getCategories = async () => {
+  const categories = await fetch(`${API_URL}/categories`);
+  return await categories.json();
+}
+
 export const getSearchedProducts = async (query: string) => {
   const searchedProducts = await fetch(`${API_URL}/search/${query}`)
   return await searchedProducts.json()

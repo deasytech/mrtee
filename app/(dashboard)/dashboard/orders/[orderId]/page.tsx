@@ -2,7 +2,6 @@ import { DataTable } from "@/components/custom-ui/data-table"
 import { columns } from "@/components/dashboard/columns/order-items-columns"
 import { naira } from "@/lib/utils"
 
-
 const OrderDetails = async ({ params }: { params: { orderId: string } }) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders/${params.orderId}`)
   const { orderDetails, customer } = await res.json()
