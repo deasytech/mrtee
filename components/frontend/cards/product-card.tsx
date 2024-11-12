@@ -1,4 +1,4 @@
-import { naira } from "@/lib/utils";
+import { naira, toTitleCase } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import LikeItem from "@/components/frontend/like-item";
@@ -26,7 +26,7 @@ const ProductCard = ({ product, updateSignedInUser }: ProductCardProps) => {
           <p className="text-body-bold">{naira(product.price)}</p>
         </div>
         <div className="flex justify-between items-center">
-          <p className="text-base-medium">{product.category}</p>
+          <p className="text-base-medium">{toTitleCase(product.category)}</p>
           <LikeItem productId={product._id} updateSignedInUser={updateSignedInUser} />
         </div>
       </div>

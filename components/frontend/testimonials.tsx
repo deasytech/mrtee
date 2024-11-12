@@ -14,7 +14,7 @@ const testimonials: Testimonial[] = [
     name: "Anonymous",
   },
   {
-    quote: "I got these boots from Mr. Tee and I don’t regret it. High quality and fast delivery 😁",
+    quote: "I got these boots from Mr. Tee and I don't regret it. High quality and fast delivery 😁",
     name: "Anonymous",
   },
   {

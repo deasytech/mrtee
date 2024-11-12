@@ -14,10 +14,10 @@ const Footer = () => {
               </Link>
               <p className="text-gray-400 text-small-medium">Welcome to Mr Tee, your ultimate destination for luxury men's fashion. We believe that style is a reflection of individuality, and our curated selection of high-end fashion pieces is designed to help you make a statement.</p>
             </div>
-            <div className="space-y-3">
+            {/* <div className="space-y-3">
               <p className="text-small-medium">Got Question? Call us 24/7</p>
               <p className="text-base-bold text-gold">+234 703 292 0367</p>
-            </div>
+            </div> */}
           </div>
           <div className='flex flex-wrap justify-between items-start w-full md:w-3/4'>
             <div>

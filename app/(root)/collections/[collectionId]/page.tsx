@@ -8,7 +8,6 @@ const CollectionDetails = async ({
   params: { collectionId: string };
 }) => {
   const collectionDetails = await getCollectionDetails(params.collectionId);
-  // console.log(collectionDetails)
   return (
     <div className="flex flex-col items-center gap-8">
       <div className="flex flex-col gap-3 items-center justify-center h-96 bg-cover bg-fixed bg-parallax w-full">
@@ -16,11 +15,18 @@ const CollectionDetails = async ({
         <p className="text-body-normal text-gray-100 text-center max-w-[900px]">{collectionDetails.description}</p>
       </div>
       <div className="flex flex-col items-center gap-8 px-10">
-        <div className="flex flex-wrap gap-16 justify-center">
-          {collectionDetails.products.map((product: TProduct) => (
-            <ProductCard key={product._id} product={product} />
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {collectionDetails && collectionDetails?.products.length > 0 && (
+            collectionDetails?.products.map((product: TProduct) => (
+              <ProductCard key={product._id} product={product} />
+            ))
+          )}
         </div>
+        {collectionDetails && collectionDetails.length === 0 &&
+          <p className="text-body-bold flex w-full h-full justify-center items-center">
+            No products found in this category
+          </p>
+        }
       </div>
     </div>
   );
