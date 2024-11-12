@@ -20,6 +20,14 @@ const CartSummary = () => {
     name: user?.fullName,
   };
 
+  const handleCheckout = async () => {
+    if (!user) {
+      router.push("sign-in");
+    } else {
+      router.push("/checkout");
+    }
+  };
+
   return (
     <div className="w-1/3 max-lg:w-full flex flex-col gap-8 bg-gray-100 border border-dashed border-gray-300 px-4 py-5">
       <p className="text-heading4-bold pb-4">
@@ -30,9 +38,7 @@ const CartSummary = () => {
           <span>Total: </span>
           <span>{naira(total)}</span>
         </div>
-        <Link href="/checkout" className="w-full">
-          <Button variant="outline" className="hover:bg-gold rounded-none hover:text-white w-full text-gold border border-gold bg-transparent">Proceed to Checkout</Button>
-        </Link>
+        <Button onClick={handleCheckout} variant="outline" className="hover:bg-gold rounded-none hover:text-white w-full text-gold border border-gold bg-transparent">Proceed to Checkout</Button>
       </div>
     </div>
   )

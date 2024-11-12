@@ -38,7 +38,7 @@ const CheckoutForm = () => {
     (acc, item) => acc + item.item.price * item.quantity,
     0
   );
-
+  console.log(cart)
   const customer = {
     clerkId: user?.id,
     email: user?.emailAddresses[ 0 ]?.emailAddress,
@@ -107,6 +107,7 @@ const CheckoutForm = () => {
           title: item.item.title,
           price: item.item.price,
           quantity: item.quantity,
+          size: item.size
         })),
         total,
         customer,

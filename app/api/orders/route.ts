@@ -8,16 +8,16 @@ import { format } from "date-fns";
 export const POST = async (req: NextRequest) => {
   try {
     await connectToDB();
-    console.log(await req.body)
-    const { cartItems, customer, total } = await req.json();
+    const body = await req.json();
+    const { firstName, lastName, address, city, state, phone, email, notes, cartItems, customer, total } = body;
 
     let existingCustomer = await Customer.findOne({ clerkId: customer.clerkId });
 
     if (!existingCustomer) {
       existingCustomer = new Customer({
         clerkId: customer.clerkId,
-        name: customer.name,
-        email: customer.email,
+        name: customer.name || `${firstName} ${lastName}`,
+        email: customer.email || email,
       });
       await existingCustomer.save();
     }
@@ -26,11 +26,18 @@ export const POST = async (req: NextRequest) => {
     const newOrder = new Order({
       customerClerkId: existingCustomer.clerkId,
       products: cartItems.map((item: any) => ({
-        itemId: item.itemId,
-        title: item.title,
-        price: item.price,
+        product: item.itemId,
         quantity: item.quantity,
+        size: item.size,
       })),
+      shippingAddress: {
+        street: address,
+        phone: phone,
+        city: city,
+        state: state,
+        country: "Nigeria",
+        notes: notes,
+      },
       totalAmount: total,
       createdAt: new Date(),
     });
