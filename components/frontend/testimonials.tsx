@@ -10,16 +10,20 @@ type Testimonial = {
 
 const testimonials: Testimonial[] = [
   {
-    quote: "The level of craftsmanship and attention to detail in Mr Tee's clothing is unmatched. I purchased a suit for a corporate event, and the compliments were endless. This is luxury at its finest!",
-    name: "Damola Abolarin",
+    quote: "I recently bought a pair of shoes from Mr Tee, and I couldn't be happier with the experience. The customer service was 100% and my shoes arrived within two days. The shoes themselves are perfect and I got great value for my money. Highly recommend!",
+    name: "Anonymous",
   },
   {
-    quote: "Shopping at Mr Tee was a seamless experience. The quality of the fabric and the fit were absolutely perfect. I've never felt more confident in my style. I'll definitely be coming back for more.",
-    name: "Amina Jide",
+    quote: "I got these boots from Mr. Tee and I don’t regret it. High quality and fast delivery 😁",
+    name: "Anonymous",
   },
   {
-    quote: "I was skeptical about online shopping for luxury clothing, but Mr Tee exceeded my expectations. The customer service was top-notch, and the clothes fit like they were made just for me.",
-    name: "Chinedu Okeke",
+    quote: "I'm a lady with big feet and it has been a hassle getting shoes that fit AND that I like. With Mr Tee, I get comfortable shoes that are my size and that I absolutely love. 5 stars from me.",
+    name: "Anonymous",
+  },
+  {
+    quote: "I wanted to get a pair of shoes as a surprise for my man and was initially confused as to what I should get. Mr Tee was very helpful with his recommendation. I got the shoes delivered the very next day for the surprise. He loved it! A million stars, if possible 😁 ✨",
+    name: "Violet",
   },
 ];
 

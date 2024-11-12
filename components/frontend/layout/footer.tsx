@@ -24,19 +24,19 @@ const Footer = () => {
               <h3 className="uppercase text-white mb-3">Useful Links</h3>
               <ul className="text-gray-400 space-y-2">
                 <li><Link href="#" className="hover:text-gold">About Mr Tee Fashion Store</Link></li>
-                <li><Link href="#" className="hover:text-gold">How to shop on Mr Tee</Link></li>
-                <li><Link href="#" className="hover:text-gold">FAQ</Link></li>
+                {/* <li><Link href="#" className="hover:text-gold">How to shop on Mr Tee</Link></li>
+                <li><Link href="#" className="hover:text-gold">FAQ</Link></li> */}
                 <li><Link href="#" className="hover:text-gold">Contact us</Link></li>
-                <li><Link href="/login" className="hover:text-gold">Login</Link></li>
+                <li><Link href="/sign-in" className="hover:text-gold">Login</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="uppercase text-white mb-3">Customer Service</h3>
               <ul className="text-gray-400 space-y-2">
-                <li><Link href="#" className="hover:text-gold">Payment Methods</Link></li>
+                {/* <li><Link href="#" className="hover:text-gold">Payment Methods</Link></li>
                 <li><Link href="#" className="hover:text-gold">Money-back guarantee!</Link></li>
                 <li><Link href="#" className="hover:text-gold">Returns</Link></li>
-                <li><Link href="#" className="hover:text-gold">Shipping</Link></li>
+                <li><Link href="#" className="hover:text-gold">Shipping</Link></li> */}
                 <li><Link href="#" className="hover:text-gold">Terms and conditions</Link></li>
                 <li><Link href="#" className="hover:text-gold">Privacy Policy</Link></li>
               </ul>
@@ -44,16 +44,16 @@ const Footer = () => {
             <div>
               <h3 className="uppercase text-white mb-3">My Account</h3>
               <ul className="text-gray-400 space-y-2">
-                <li><Link href="#" className="hover:text-gold">Register</Link></li>
-                <li><Link href="#" className="hover:text-gold">View Cart</Link></li>
-                <li><Link href="#" className="hover:text-gold">My Wishlist</Link></li>
+                <li><Link href="/sign-up" className="hover:text-gold">Register</Link></li>
+                <li><Link href="/cart" className="hover:text-gold">View Cart</Link></li>
+                {/* <li><Link href="#" className="hover:text-gold">My Wishlist</Link></li>
                 <li><Link href="#" className="hover:text-gold">Track My Order</Link></li>
-                <li><Link href="#" className="hover:text-gold">Help</Link></li>
+                <li><Link href="#" className="hover:text-gold">Help</Link></li> */}
               </ul>
             </div>
             <div>
               <h3 className="uppercase text-white mb-3">Sign up to newsletter</h3>
-              <p className="text-gray-400 text-small-medium mb-2">Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan</p>
+              <p className="text-gray-400 text-small-medium mb-2">Be the first to get notified about up coming deals and promotion.</p>
               <Input className="bg-white text-gray-800 border-gray-700 rounded-none" placeholder="Enter your email address" />
               <div className="space-y-3 mt-6">
                 <Image src="/images/paystack-ii.webp" alt="payment" className="bg-white rounded-md" width={272} height={20} />
@@ -78,7 +78,7 @@ const Footer = () => {
         </div>
       </div>
       <script src="https://static.elfsight.com/platform/platform.js" async></script>
-      <div className="elfsight-app-4ec9c021-5808-4ab1-973a-5c46395f1ae0" data-elfsight-app-lazy></div>
+      <div className="elfsight-app-207a2851-baee-402a-9f2f-5e491669e44a" data-elfsight-app-lazy></div>
     </>
   )
 }
