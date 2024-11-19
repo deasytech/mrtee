@@ -22,7 +22,7 @@ const CartSummary = () => {
 
   const handleCheckout = async () => {
     if (!user) {
-      router.push("sign-in");
+      router.push("/sign-in");
     } else {
       router.push("/checkout");
     }
