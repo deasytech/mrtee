@@ -13,14 +13,14 @@ export const metadata: Metadata = {
     title: "Mr Tee Luxury Store",
     description:
       "Explore Mr Tee Luxury Store for high-quality male and female clothing and footwear. Elevate your style with our curated fashion pieces.",
-    siteId: "https://www.mrtee.com",
+    siteId: "https://mrteeluxurystore.com.ng",
     card: "summary_large_image",
     site: "@site",
     creator: "@creator",
   },
   openGraph: {
     type: "website",
-    url: "https://mrtee.com",
+    url: "https://mrteeluxurystore.com.ng",
     title: "Mr Tee Luxury Store",
     description:
       "Discover Mr Tee Luxury Store's exquisite collection of male and female clothing and footwear. Perfect for those who appreciate high-quality fashion.",

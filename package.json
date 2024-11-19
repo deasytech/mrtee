@@ -35,6 +35,7 @@
     "react-hot-toast": "^2.4.1",
     "react-paystack": "^6.0.0",
     "recharts": "^2.12.7",
+    "sharp": "^0.33.5",
     "stripe": "^16.1.0",
     "swiper": "^11.1.4",
     "tailwind-merge": "^2.3.0",
