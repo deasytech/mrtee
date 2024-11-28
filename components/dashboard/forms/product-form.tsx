@@ -221,6 +221,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData }) => {
                       <SelectItem value="round-necks">Round Necks</SelectItem>
                       <SelectItem value="cargo-pants">Cargo Pants</SelectItem>
                       <SelectItem value="jean-flare-pants">Jean Flare Pants</SelectItem>
+                      <SelectItem value="slippers">Slippers</SelectItem>
                       <SelectItem value="sneakers">Sneakers</SelectItem>
                       <SelectItem value="corporate-shoes">Corporate Shoes</SelectItem>
                     </SelectContent>

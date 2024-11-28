@@ -34,6 +34,7 @@ export const mainMenu = [
         sub: [
           { label: "Sneakers", url: "/category/sneakers" },
           { label: "Corporate Shoes", url: "/category/corporate-shoes" },
+          { label: "Slippers", url: "/slippers" },
         ],
       },
     ],
