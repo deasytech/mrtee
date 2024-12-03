@@ -57,26 +57,22 @@ const WishList = () => {
 
 
   return loading ? <Loader /> : (
-    <div className="px-10">
-      <Image
-        src="/images/slides/slide-1.png"
-        width={1500}
-        height={1000}
-        alt="menu"
-        className="w-full h-60 object-cover object-top"
-      />
-      <div className="border-b -mx-10 border-gray-500" />
-      <p className="text-heading3-bold my-10">Your Wishlist</p>
-      {wishlist.length === 0 && (
-        <p>No items in your wishlist</p>
-      )}
-
-      <div className="flex flex-wrap justify-center gap-16">
-        {wishlist.map((product) => (
-          <ProductCard key={product._id} product={product} updateSignedInUser={updateSignedInUser} />
-        ))}
+    <>
+      <div className="flex flex-col gap-3 items-center justify-center h-96 bg-cover bg-fixed bg-parallax w-full text-white">
+        <h1 className="text-heading1-bold">Your Wishlist</h1>
+        <p>Save the things you can come back for</p>
       </div>
-    </div>
+      <div className="px-10 max-sm:px-3 pt-5">
+        {wishlist.length === 0 && (
+          <p className="text-body-bold my-5">No items in your wishlist</p>
+        )}
+        <div className="flex flex-wrap justify-center gap-16">
+          {wishlist.map((product) => (
+            <ProductCard key={product._id} product={product} updateSignedInUser={updateSignedInUser} />
+          ))}
+        </div>
+      </div>
+    </>
   )
 }
 

@@ -9,72 +9,67 @@ const Orders = async () => {
   const orders = await getOrders(userId as string);
 
   return (
-    <div className="px-10 max-sm:px-3">
-      <Image
-        src="/images/slides/slide-1.png"
-        width={1500}
-        height={1000}
-        alt="menu"
-        className="w-full h-60 object-cover object-top"
-      />
-      <div className="border-b -mx-10 border-gray-500" />
-      <p className="text-heading3-bold my-10">Your Orders</p>
-      {!orders ||
-        (orders.length === 0 && (
-          <p className="text-body-bold my-5">You have no orders yet.</p>
-        ))}
-
-      <div className="flex flex-col gap-10">
-        {orders?.map((order: TCustomerOrder) => (
-          <div key={order._id} className="flex flex-col gap-8 p-4 hover:bg-grey-1">
-            <div className="flex gap-20 max-md:flex-col max-md:gap-3">
-              <p className="text-base-bold">Order ID: {order._id}</p>
-              <p className="text-base-bold">
-                Total Amount: ${order.totalAmount}
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-5">
-              {order.products.map((orderItem: TOrder, index: number) => (
-                <div key={index} className="flex gap-4">
-                  <Image
-                    src={orderItem.product.media[ 0 ]}
-                    alt={orderItem.product.title}
-                    width={100}
-                    height={100}
-                    className="w-32 h-32 object-cover rounded-lg"
-                  />
-                  <div className="flex flex-col justify-between">
-                    <p className="text-small-medium">
-                      Title:{" "}
-                      <span className="text-small-bold">
-                        {orderItem.product.title}
-                      </span>
-                    </p>
-                    {orderItem.size && (
+    <>
+      <div className="flex flex-col gap-3 items-center justify-center h-96 bg-cover bg-fixed bg-parallax w-full text-white">
+        <h1 className="text-heading1-bold">Your Orders</h1>
+        <p>keep your orders coming</p>
+      </div>
+      <div className="px-10 max-sm:px-3 pt-5">
+        {!orders ||
+          (orders.length === 0 && (
+            <p className="text-body-bold my-5">You have no orders yet.</p>
+          ))}
+        <div className="flex flex-col gap-10">
+          {orders?.map((order: TCustomerOrder) => (
+            <div key={order._id} className="flex flex-col gap-8 p-4 hover:bg-grey-1">
+              <div className="flex gap-20 max-md:flex-col max-md:gap-3">
+                <p className="text-base-bold">Order ID: {order._id}</p>
+                <p className="text-base-bold">
+                  Total Amount: ${order.totalAmount}
+                </p>
+              </div>
+              <div className="flex flex-col gap-5">
+                {order.products.map((orderItem: TOrder, index: number) => (
+                  <div key={index} className="flex gap-4">
+                    <Image
+                      src={orderItem.product.media[ 0 ]}
+                      alt={orderItem.product.title}
+                      width={100}
+                      height={100}
+                      className="w-32 h-32 object-cover rounded-lg"
+                    />
+                    <div className="flex flex-col justify-between">
                       <p className="text-small-medium">
-                        Size:{" "}
+                        Title:{" "}
                         <span className="text-small-bold">
-                          {orderItem.size}
+                          {orderItem.product.title}
                         </span>
                       </p>
-                    )}
-                    <p className="text-small-medium">
-                      Unit price:{" "}
-                      <span className="text-small-bold">{naira(orderItem.product.price)}</span>
-                    </p>
-                    <p className="text-small-medium">
-                      Quantity:{" "}
-                      <span className="text-small-bold">{orderItem.quantity}</span>
-                    </p>
+                      {orderItem.size && (
+                        <p className="text-small-medium">
+                          Size:{" "}
+                          <span className="text-small-bold">
+                            {orderItem.size}
+                          </span>
+                        </p>
+                      )}
+                      <p className="text-small-medium">
+                        Unit price:{" "}
+                        <span className="text-small-bold">{naira(orderItem.product.price)}</span>
+                      </p>
+                      <p className="text-small-medium">
+                        Quantity:{" "}
+                        <span className="text-small-bold">{orderItem.quantity}</span>
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
