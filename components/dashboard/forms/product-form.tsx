@@ -45,6 +45,17 @@ const formSchema = z.object({
   price: z.coerce.number().min(0.1),
 })
 
+const categories = [
+  { value: "sweat-shirts", label: "Sweat Shirts" },
+  { value: "flannel", label: "Flannel" },
+  { value: "round-necks", label: "Round Necks" },
+  { value: "cargo-pants", label: "Cargo Pants" },
+  { value: "jean-flare-pants", label: "Jean Flare Pants" },
+  { value: "slippers", label: "Slippers" },
+  { value: "sneakers", label: "Sneakers" },
+  { value: "corporate-shoes", label: "Corporate Shoes" },
+];
+
 interface ProductFormProps {
   initialData?: TProduct | null;
 }
@@ -216,14 +227,11 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData }) => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="sweat-shirts">Sweat Shirts</SelectItem>
-                      <SelectItem value="flannel">Flannel</SelectItem>
-                      <SelectItem value="round-necks">Round Necks</SelectItem>
-                      <SelectItem value="cargo-pants">Cargo Pants</SelectItem>
-                      <SelectItem value="jean-flare-pants">Jean Flare Pants</SelectItem>
-                      <SelectItem value="slippers">Slippers</SelectItem>
-                      <SelectItem value="sneakers">Sneakers</SelectItem>
-                      <SelectItem value="corporate-shoes">Corporate Shoes</SelectItem>
+                      {categories.map((category) => (
+                        <SelectItem key={category.value} value={category.value}>
+                          {category.label}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <FormMessage />
