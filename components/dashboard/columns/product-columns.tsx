@@ -41,6 +41,6 @@ export const columns: ColumnDef<TProduct>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <Delete item="menu" id={row.original._id} />,
+    cell: ({ row }) => <Delete item="product" id={row.original._id} />,
   },
 ];

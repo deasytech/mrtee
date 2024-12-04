@@ -18,6 +18,7 @@ export const getLatestProducts = async (limit: number) => {
   try {
     const res = await fetch(`${API_URL}/products?limit=${limit}`);
     const products = await res.json();
+    console.log("Fetched products:", products);
     return products;
   } catch (error) {
     console.error("Error fetching latest products:", error);
